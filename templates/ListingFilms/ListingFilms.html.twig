@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %} 
+
+{% block title %}  Films {% endblock %}
+
+{% block body %}<br><br>
+
+<div class = "center"> Voici le films disponibles </div>
+
+  {% if Films | length == 0 %}  
+    Pas de Films disponible
+   {% endif %}
+
+   {% for Film in Films %}  
+    <table class="table">
+     <tr>
+      <th> Titre </th>
+      <th>{{ Film.Title }}</th>
+      </tr>
+       <tr>
+       <th> Realisateur </th>
+      <td>{{ Film.Realisator }}</td>
+      </tr>
+       <tr>
+       <th> Genre </th>
+      <td>{{ Film.Genre }}</td>
+      </tr>
+    {% endfor %}
+ </table>
+{% endblock %}
+
+      

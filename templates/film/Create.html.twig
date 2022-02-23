@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %} 
+
+{% block title %}
+
+{% if (isEditor) %} 
+    Modifier Film
+{% else %} 
+    Ajout Film
+{% endif  %} 
+{% endblock %}
+
+{% block body %}
+
+{% if (isEditor) %} 
+    <div> Formulaire edition de Film </div>
+{% else %} 
+    <div> Formulaire d'ajout de Film </div>
+{% endif  %} 
+
+    {{ form_start(form) }}
+    <div>
+        {{ form_row(form.Title , {'label' : 'Title :'}) }}
+    </div>
+    <div>
+        {{ form_row(form.Realisator , {'label' : 'Realisator :'}) }}
+    </div>
+     <div>
+        {{ form_row(form.Genre, {'label' : 'Genre :'}) }}
+    </div>
+     <div>
+        {% if (isEditor) %} 
+            {{ form_row(form.save, {'label' : 'Edit :'}) }}
+        {% else %} 
+            {{ form_row(form.save, {'label' : 'Save :'}) }}
+        {% endif  %} 
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}
