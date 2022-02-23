@@ -4,34 +4,39 @@
 
 {% block body %}<br><br>
 
-<div class="top"> Voici le films disponibles </div>
+<div class="cen"> Voici le films disponibles </div>
 
   {% if Films | length == 0 %}  
     Pas de Films disponible
    {% endif %}
 
+
    {% for Film in Films %}  
-    <table class="table">
-     <tr>
-      <th> Titre </th><br>
-      <th>{{ Film.Title }}</th>
-      </tr>
-       <tr>
-       <th> Realisateur </th>
-      <td>{{ Film.Realisator }}</td>
-      </tr>
-      <th> Description </th>
-      <td>{{ Film.Description }}</td>
-      </tr>
-       <tr>
-       <th> Genre </th>
-      <td>{{ Film.Genre }}</td>
-      </tr>
-      <a href="{{ path('update_films' , { 'id' : Film.id } ) }}">Editer</a>
-      <a href="{{ path('delete_films' , { 'id' : Film.id } ) }}">Supprimer</a>
-      <a href="{{ path('description_films' , { 'id' : Film.id } ) }}">Description</a>
-    {% endfor %}
- </table>
+<table id="customers">
+   <tr>
+    <th>Titre</th>
+    <th>Realisateur</th>
+    <th>Description</th>
+    <th>Genre</th>
+  </tr>
+  <tr>
+    <td>{{ Film.Title }}</td>
+    <td>{{ Film.Realisator }}</td>
+    <td>{{ Film.Description }}</td>
+    <td>{{ Film.Genre }}</td>
+  </tr>
+  <tr>
+    <td>   <a href="{{ path('update_films' , { 'id' : Film.id } ) }}">Editer</a></td>
+    <td>   <a href="{{ path('delete_films' , { 'id' : Film.id } ) }}" onclick="return confirm('Vous etez sur de supprimer le Film ?')">Supprimer</a></td>
+    <td>  <a href="{{ path('description_films' , { 'id' : Film.id } ) }}">Description</a></td>
+  </tr>
+</table>
+{% endfor %}
+
 {% endblock %}
 
- 
+
+
+
+
+

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+         
         <meta charset="UTF-8">
         <title>{% block title %}  {{page_title}}  {% endblock %}</title>
-         <link rel="stylesheet" href="{{ 'css/navbar.css' }}">
-            {% block stylesheets %}
-             {% endblock %}
+            {% block stylesheets %} 
+            <link rel="stylesheet" href="{{ 'css/navbar.css' }}">
+            {% endblock %}
+        
                 {% block javascripts %}
                  {% endblock %}
     </head>

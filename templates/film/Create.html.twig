@@ -30,9 +30,9 @@
     <div>
         {{ form_row(form.Description, {'label' : 'Description :'}) }}
     </div>
-     <div>
+     <div >
         {% if (isEditor) %} 
-            {{ form_row(form.save, {'label' : 'Edit :'}) }}
+            {{ form_row(form.save, {'label' : 'Edit :'}) }} 
         {% else %} 
             {{ form_row(form.save, {'label' : 'Save :'}) }}
         {% endif  %} 
@@ -40,3 +40,4 @@
     {{ form_end(form) }}
 
 {% endblock %}
+
