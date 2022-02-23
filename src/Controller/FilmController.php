@@ -16,7 +16,7 @@ class FilmController extends AbstractController
    
     /**
      * @Route("/createfilms", name="create_films")
-     * @Route("/updatefilms/{id?1}", name="update_films")
+     * @Route("/updatefilms/{id}", name="update_films")
      */
     public function createfilms(Request $request, ManagerRegistry $doctrine, $id = null)
     {
@@ -41,6 +41,7 @@ class FilmController extends AbstractController
             ->add('Title', TextType::class)
             ->add('Realisator',TextType::class)
             ->add('Genre', TextType::class)
+            ->add('Description', TextType::class)
             ->add('save', SubmitType::class)
             ->getForm();
 
@@ -53,9 +54,7 @@ class FilmController extends AbstractController
 
                 $entityManager ->persist($Films);
                 $entityManager ->flush();
-
-               // dd($Films);
-    
+   
                 // ... perform some action, such as saving the task to the database
     
                 return $this->redirectToRoute('listingfilms');
@@ -79,5 +78,30 @@ class FilmController extends AbstractController
     }
 
     
-    
+    /**
+     * @Route("/deletefilms/{id}", name="delete_films")
+     */
+    public function delete(ManagerRegistry $doctrine,  $id )
+    {
+        $entityManager = $doctrine->getManager();
+        $film = $entityManager->getRepository(Films::class)->find($id);
+        
+        if (isset($film)) {
+            $entityManager->remove($film);
+            $entityManager->flush();
+       } 
+        return $this->redirectToRoute('listingfilms');
+    }
+
+    /**
+     * @Route("/descriptionfilms/{id}", name="description_films")
+     */
+    public function descrition(ManagerRegistry $doctrine, $id )
+    {
+        $entityManager = $doctrine->getManager();
+        $films = $entityManager->getRepository(Films::class)->find($id);
+        
+        return $this->render('film/description.html.twig', 
+        ['Films' => $films ]);
+    }
 }

@@ -22,6 +22,9 @@ class Films
     #[ORM\Column(type: 'string', length: 255)]
     private $genre;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $Description;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Films
     public function setGenre(string $genre): self
     {
         $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->Description;
+    }
+
+    public function setDescription(string $Description): self
+    {
+        $this->Description = $Description;
 
         return $this;
     }

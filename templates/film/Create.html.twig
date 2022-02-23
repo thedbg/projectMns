@@ -27,6 +27,9 @@
      <div>
         {{ form_row(form.Genre, {'label' : 'Genre :'}) }}
     </div>
+    <div>
+        {{ form_row(form.Description, {'label' : 'Description :'}) }}
+    </div>
      <div>
         {% if (isEditor) %} 
             {{ form_row(form.save, {'label' : 'Edit :'}) }}

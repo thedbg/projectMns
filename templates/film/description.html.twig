@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %} 
+
+{% block title %}  Film {% endblock %}
+
+{% block body %}<br><br>
+
+<div class="co"> Voici le Film {{ Films.Title }} </div>
+
+
+{% if Films %}  
+    <table class="table">
+     <tr>
+      <th> Description </th><br>
+       </tr>
+      <tr>
+      <th>{{ Films.Description }}</th>
+      </tr>
+
+       
+{% endif %}
+ </table>
+{% endblock %}

@@ -4,7 +4,7 @@
 
 {% block body %}<br><br>
 
-<div class = "center"> Voici le films disponibles </div>
+<div class="top"> Voici le films disponibles </div>
 
   {% if Films | length == 0 %}  
     Pas de Films disponible
@@ -13,19 +13,25 @@
    {% for Film in Films %}  
     <table class="table">
      <tr>
-      <th> Titre </th>
+      <th> Titre </th><br>
       <th>{{ Film.Title }}</th>
       </tr>
        <tr>
        <th> Realisateur </th>
       <td>{{ Film.Realisator }}</td>
       </tr>
+      <th> Description </th>
+      <td>{{ Film.Description }}</td>
+      </tr>
        <tr>
        <th> Genre </th>
       <td>{{ Film.Genre }}</td>
       </tr>
+      <a href="{{ path('update_films' , { 'id' : Film.id } ) }}">Editer</a>
+      <a href="{{ path('delete_films' , { 'id' : Film.id } ) }}">Supprimer</a>
+      <a href="{{ path('description_films' , { 'id' : Film.id } ) }}">Description</a>
     {% endfor %}
  </table>
 {% endblock %}
 
-      
+ 
