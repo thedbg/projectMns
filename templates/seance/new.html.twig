@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Séance{% endblock %}
+
+{% block body %}
+    <h1>Création de la Séance</h1>
+
+    {{ include('seance/_form.html.twig') }}
+
+    <a href="{{ path('seance_index') }}">Seances</a>
+{% endblock %}

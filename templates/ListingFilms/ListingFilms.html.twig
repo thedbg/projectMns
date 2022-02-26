@@ -4,7 +4,7 @@
 
 {% block body %}<br><br>
 
-<div class="cen"> Voici le films disponibles </div>
+<div class="cen"> Voici les  films disponibles </div>
 
   {% if Films | length == 0 %}  
     Pas de Films disponible
@@ -28,7 +28,7 @@
   <tr>
     <td>   <a href="{{ path('update_films' , { 'id' : Film.id } ) }}">Editer</a></td>
     <td>   <a href="{{ path('delete_films' , { 'id' : Film.id } ) }}" onclick="return confirm('Vous etez sur de supprimer le Film ?')">Supprimer</a></td>
-    <td>  <a href="{{ path('description_films' , { 'id' : Film.id } ) }}">Description</a></td>
+    <td>   <a href="{{ path('description_films' , { 'id' : Film.id } ) }}">Description</a></td>
   </tr>
 </table>
 {% endfor %}

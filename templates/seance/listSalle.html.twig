@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Seance de la Salle {{ salle.id }} {% endblock %}
+
+{% block body %}
+    <h1>Création de la Seance {{ salle.id }}</h1>
+
+{% for Salle in salles %}
+            <tr>
+                <td>{{ salle.id }}</td>
+                <td>{{ seance.Film.title }}</td>
+                <td>{{ seance.dateDebut ? seance.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ seance.langue }}</td>
+                <td>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

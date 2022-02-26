@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Seance index{% endblock %}
+
+{% block body %}
+    <h1>Création de la Seance</h1>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse; width: 100%;}
+
+#customers td, #customers th {
+  border: 1px solid #ddd; padding: 8px;}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px; padding-bottom: 12px;
+  text-align: left; background-color: #04AA6D;
+  color: white;}
+</style>
+    <table id="customers">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Film</th>
+                <th>DateDebut</th>
+                <th>Langue</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for seance in seances %}
+            <tr>
+                <td>{{ seance.id }}</td>
+                <td>{{ seance.Film.title }}</td>
+                <td>{{ seance.dateDebut ? seance.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ seance.langue }}</td>
+                <td>
+                    <a href="{{ path('seance_show', {'id': seance.id}) }}">show</a>
+                    <a href="{{ path('seance_edit', {'id': seance.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('seance_new') }}">Création seance</a>
+{% endblock %}

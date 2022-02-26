@@ -1,16 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-<div style="text-align:center;"><b> Lors de votre seance {{ seance }} vous regardez le film {{ film }} dans la salle {{ salle }} </b></div>
-<br><br>
-<br><br>
-<form style="text-align:center;">
-  <label for="username">Username:</label><br>
-  <input type="text" id="username" name="username"><br>
-  <label for="pwd">Password:</label><br>
-  <input type="password" id="pwd" name="pwd">
-  <br><br>
-  <input type="submit" value="Submit">
-</form>
+{% block title %}Salle{% endblock %}
 
+{% block body %}
+    <h1>Création Salle</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for salle in salles %}
+            <tr>
+                <td>{{ salle.id }}</td>
+                <td>{{ salle.etat ? 'Ouvert' : 'Fermée' }}</td>
+                <td>
+                    <a href="{{ path('salle_show', {'id': salle.id}) }}">show</a>
+                    <a href="{{ path('salle_edit', {'id': salle.id}) }}">edit</a>
+                    <a href="{{ path('list_Seance', {'id': salle.id}) }}">voir les Seances</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('salle_new') }}">Create new salle</a>
 {% endblock %}
